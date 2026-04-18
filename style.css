@@ -175,3 +175,57 @@ img{max-width:100%;display:block}
 .cta-section .section{padding:0}
 .section-title.light{color:white}
 .section-sub.light{color:rgba(255,255,255,.75)}
+
+/* ── LOGO POP FIX ── */
+/* Nav becomes white with navy text for contrast */
+.site-nav {
+  background: white !important;
+  border-bottom: 3px solid var(--navy);
+  box-shadow: 0 2px 16px rgba(13,43,94,.12) !important;
+}
+.nav-links a {
+  color: var(--navy) !important;
+}
+.nav-links a:hover, .nav-links a.active {
+  background: rgba(13,43,94,.08) !important;
+  color: var(--navy) !important;
+}
+.nav-links a.active {
+  color: var(--gold-dk) !important;
+}
+.nav-name {
+  color: var(--navy) !important;
+}
+.nav-name span {
+  color: var(--muted) !important;
+}
+.nav-social a {
+  color: var(--navy) !important;
+}
+.nav-social a:hover {
+  color: var(--gold-dk) !important;
+}
+.nav-toggle span {
+  background: var(--navy) !important;
+}
+
+/* Hero logo — white card so logo pops in full color */
+.hero-logo-wrap {
+  background: white;
+  border-radius: 20px;
+  padding: 24px 40px;
+  display: inline-block;
+  margin: 0 auto 40px;
+  box-shadow: 0 8px 32px rgba(13,43,94,.20);
+}
+.hero-logo {
+  width: 280px;
+  max-width: 70%;
+  display: block;
+  filter: none !important;
+}
+
+/* Footer logo on dark — keep as is, looks good */
+.site-footer .footer-logo {
+  filter: brightness(1.1);
+}
