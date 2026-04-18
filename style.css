@@ -158,3 +158,20 @@ img{max-width:100%;display:block}
   .trust-inner{gap:28px}
   .contact-form{padding:24px}
 }
+
+/* ── TRANSPARENT LOGO FIXES ── */
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-name{font-family:'Cormorant Garamond',serif;font-size:17px;color:white;font-weight:600;line-height:1.2;white-space:nowrap}
+.nav-name span{display:block;font-size:11px;font-weight:400;color:rgba(255,255,255,.6);letter-spacing:.5px;font-family:'Jost',sans-serif}
+.hero-logo-wrap{margin:0 auto 36px;display:flex;justify-content:center}
+.hero-logo{width:320px;max-width:75%;filter:drop-shadow(0 2px 16px rgba(200,159,42,.15))}
+.nav-logo{height:44px;width:auto;filter:drop-shadow(0 1px 4px rgba(0,0,0,.2))}
+.footer-logo{height:56px;width:auto;margin-bottom:16px;filter:drop-shadow(0 1px 4px rgba(0,0,0,.3))}
+.nav-social a{color:rgba(255,255,255,.6);transition:.2s}
+.nav-social a:hover{color:var(--gold)!important;opacity:1}
+.soc-link{color:rgba(255,255,255,.6)}
+.soc-link:hover{color:var(--gold)!important;opacity:1;transform:translateY(-2px)}
+.cta-section{padding:72px 24px;background:var(--navy);color:white}
+.cta-section .section{padding:0}
+.section-title.light{color:white}
+.section-sub.light{color:rgba(255,255,255,.75)}
