@@ -42,12 +42,29 @@
       <p>To become a nationally recognized, woman-owned healthcare support company — growing from Metro Chicagoland throughout Illinois and beyond, known for the excellence, consistency, and genuine care we bring to every client we serve.</p>
     </div>
   </div>
+
+<div style="margin-top:32px;border-radius:14px;overflow:hidden;box-shadow:0 6px 32px rgba(13,43,94,.12)">
+  <img src="img_seniors.jpg" alt="Diverse seniors enjoying life with Solvia support" style="width:100%;height:320px;object-fit:cover;display:block" loading="lazy">
+</div>
 </div></div>
 
 <div class="section-navy">
   <div class="section" style="text-align:center;padding:48px 0">
     <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,30px);font-style:italic;color:var(--gold-lt);line-height:1.6;max-width:700px;margin:0 auto 16px">"We were built for this. Not just to provide a service — but to set a standard."</p>
     <p style="font-size:14px;color:rgba(255,255,255,.5);letter-spacing:.5px">— Dr. Erica Vauters, Founder &amp; CEO</p>
+  </div>
+</div>
+
+
+<div class="img-section" style="margin-top:0">
+  <div class="img-panel">
+    <img src="img_walker.jpg" alt="Attentive caregiver supporting elderly client with walker" loading="lazy">
+  </div>
+  <div class="img-content">
+    <span class="eyebrow">Why We Exist</span>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3vw,38px);color:#0D2B5E;margin-bottom:16px;font-weight:700">Every Client Is Someone's Family.</h2>
+    <p style="color:#5A6070;font-size:15px;line-height:1.8;font-weight:300">Behind every service request is a real person and a real family trying to navigate a system that was not designed to catch them. Solvia was built for that family. We show up with dignity, consistency, and genuine care — because that is what every person deserves.</p>
+    <a href="contact.html" class="btn btn-navy" style="margin-top:20px">Get in Touch</a>
   </div>
 </div>
 
@@ -217,6 +234,38 @@
 var open=false,started=false,collecting=false,cstep=null,cinfo={};
 
 var QA=[
+  {k:["hello","hi","hey","good morning","good afternoon","good evening","howdy"],
+   a:"Hello! Welcome to Solvia Health Services. I am here to help 24/7. You can ask me about our services, coverage area, how to get started, or careers. What can I help you with?",
+   q:["What services do you offer?","What areas do you serve?","How do I get started?","I'm looking for a job"]},
+
+  {k:["thank","thanks","ty","appreciate","helpful","great","awesome","perfect","wonderful","sounds good"],
+   a:"You are very welcome! Is there anything else I can help you with today?",
+   q:["What services do you offer?","How do I get started?","What areas do you serve?"]},
+
+  {k:["ok","okay","got it","understood","sure","alright","makes sense","noted"],
+   a:"Great! Feel free to ask anything else. I am here to help.",
+   q:["What services do you offer?","How do I get started?","What areas do you serve?"]},
+
+  {k:["how long","timeline","when can you start","how soon","wait time","waiting"],
+   a:"We typically begin service within 14 business days of a signed agreement. For urgent needs, contact us directly — we do our best to accommodate same-day and emergency placements. For home support, we start with a free 60-minute assessment first.",
+   q:["How do I get started?","Do you accept insurance?","What areas do you serve?"]},
+
+  {k:["free","assessment","consultation","eval","evaluate","visit"],
+   a:"Yes — we offer a free 60-minute assessment visit for new home support clients. This lets us understand your needs and build a care plan before any commitment. Contact us at evauters@solviahealth.org or (757) 266-2702 to schedule.",
+   q:["How do I get started?","Tell me about home support","Do you accept insurance?"]},
+
+  {k:["contact","email","phone","call","number","reach","speak","talk","person"],
+   a:"You can reach us at <a href='mailto:evauters@solviahealth.org' style='color:#C89F2A'>evauters@solviahealth.org</a> or call <a href='tel:7572662702' style='color:#C89F2A'>(757) 266-2702</a>. We respond within 4 hours. You can also fill out our inquiry form at the Contact page. Would you like to leave your number for a callback?",
+   q:["Yes — have Dr. Vauters call me","What services do you offer?","How do I get started?"]},
+
+  {k:["senior","elderly","elder","aging","old","grandmother","grandfather","parent","mom","dad","grandma","grandpa","loved one"],
+   a:"Solvia specializes in support for seniors and elderly individuals. We provide transportation to appointments, companion care and personal care at home, dementia and Alzheimer's specialist care, overnight coverage, and complex care for high-acuity clients. We treat every client like family.",
+   q:["Tell me about home support","Do you accept insurance?","How do I get started?"]},
+
+  {k:["website","site","online","page","link","url","www"],
+   a:"Our full website is at <a href='https://www.solviahealth.org' style='color:#C89F2A'>www.solviahealth.org</a>. You can learn about all our services, view career opportunities, and submit an inquiry directly from the Contact page.",
+   q:["What services do you offer?","How do I get started?","I'm looking for a job"]},
+
   {k:["what services","what do you offer","what do you do","services","tell me about"],
    a:"Solvia offers four services: <b>Patient Transportation</b> (appointments, dialysis, after-hours), <b>Medical Courier & Logistics</b> (specimens, pharmaceuticals, STAT runs), <b>Private Duty Home Support</b> (companion care through hospice), and <b>Mobile Drug Testing</b> launching soon. All active now except drug testing.",
    q:["Tell me about transportation","Tell me about home support","Tell me about courier","How do I get started?"]},
@@ -352,9 +401,9 @@ function respond(text){
       addMsg('bot',matched.a);
       if(matched.q)setTimeout(function(){showQ(matched.q);},500);
     } else {
-      // Genuinely cannot answer — now suggest contact
-      addMsg('bot','That is a great question. For the most accurate answer on that, please reach out to Dr. Vauters directly at <a href="mailto:evauters@solviahealth.org" style="color:#C89F2A">evauters@solviahealth.org</a> or call <a href="tel:7572662702" style="color:#C89F2A">(757) 266-2702</a> — she responds within 4 hours. Would you like to leave your number for a callback instead?');
-      setTimeout(function(){showQ(['Yes — have Dr. Vauters call me','What services do you offer?','How do I get started?']);},500);
+      // Genuinely cannot answer — friendly redirect
+      addMsg('bot','I want to make sure you get the right answer on that. You can reach us at <a href="mailto:evauters@solviahealth.org" style="color:#C89F2A">evauters@solviahealth.org</a> or call <a href="tel:7572662702" style="color:#C89F2A">(757) 266-2702</a> — we respond within 4 hours. Or I can take your number and have Dr. Vauters call you directly.');
+      setTimeout(function(){showQ(['Yes — have Dr. Vauters call me','What services do you offer?','How do I get started?','What areas do you serve?']);},500);
     }
   }, 700 + Math.random()*400);
 }

@@ -32,6 +32,7 @@
 <div class="section-full"><div class="section">
 
 <div class="service-block" id="transport">
+  <img src="img_car.jpg" alt="Driver helping elderly patient get into vehicle for medical transport" class="service-img" loading="lazy">
   <div class="service-header"><span class="service-icon">🚗</span><div><h2>Patient Transportation</h2><p>Active Now &middot; Non-emergency ambulatory transport &middot; After-hours coverage available</p></div></div>
   <div class="service-body">
     <p style="color:var(--muted);font-size:15px;margin-bottom:20px;font-weight:300">Reliable, on-time non-emergency transportation for individuals who need to get where they're going — safely and with dignity. Available Monday through Saturday with Sunday emergency response.</p>
@@ -40,11 +41,16 @@
       <li>Emergency response coverage</li><li>Recurring dialysis round trips</li>
       <li>After-hours and weekend coverage</li><li>Wait time service at appointments</li>
     </ul>
-    <a href="contact.html" class="btn btn-navy" style="margin-top:8px">Inquire About Transportation</a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+  <img src="img_wheelchair.jpg" alt="Caregiver transporting senior in wheelchair" style="width:100%;height:180px;object-fit:cover;border-radius:10px" loading="lazy">
+  <img src="img_car.jpg" alt="Driver assisting elderly patient into vehicle" style="width:100%;height:180px;object-fit:cover;border-radius:10px" loading="lazy">
+</div>
+<a href="contact.html" class="btn btn-navy" style="margin-top:8px">Inquire About Transportation</a>
   </div>
 </div>
 
 <div class="service-block" id="courier">
+  <img src="img_courier.jpg" alt="Professional medical courier ready for delivery" class="service-img" loading="lazy">
   <div class="service-header"><span class="service-icon">🧬</span><div><h2>Medical Courier &amp; Logistics</h2><p>Active Now &middot; Specimen transport &middot; Pharmaceutical delivery &middot; STAT &amp; after-hours runs</p></div></div>
   <div class="service-body">
     <p style="color:var(--muted);font-size:15px;margin-bottom:20px;font-weight:300">Clinical-grade courier service with chain-of-custody documentation on every run. We cover the evening and rural gaps other couriers won't — because that's exactly where patients and facilities need us most.</p>
@@ -58,6 +64,7 @@
 </div>
 
 <div class="service-block" id="home">
+  <img src="img_transfer.jpg" alt="Caregivers providing professional home support assistance" class="service-img" loading="lazy">
   <div class="service-header"><span class="service-icon">🏠</span><div><h2>Private Duty Home Support</h2><p>Active Now &middot; CNA-supervised &middot; Dementia, behavioral health &amp; total dependent care</p></div></div>
   <div class="service-body">
     <p style="color:var(--muted);font-size:15px;margin-bottom:20px;font-weight:300">We take the cases other agencies decline. Every care plan is supervised by a CNA and Nursing Professional. Every caregiver is trained to Solvia's clinical standard before their first shift.</p>
@@ -66,11 +73,16 @@
       <li>Total dependent care with full PPE</li><li>Overnight flat-rate coverage</li>
       <li>Same-day emergency placement</li><li>LTC insurance invoice support</li>
     </ul>
-    <a href="contact.html" class="btn btn-navy" style="margin-top:8px">Inquire About Home Support</a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+  <img src="img_medication.jpg" alt="Caregiver helping senior with medication" style="width:100%;height:180px;object-fit:cover;border-radius:10px" loading="lazy">
+  <img src="img_walker.jpg" alt="Caregiver supporting elderly client with walker" style="width:100%;height:180px;object-fit:cover;border-radius:10px" loading="lazy">
+</div>
+<a href="contact.html" class="btn btn-navy" style="margin-top:8px">Inquire About Home Support</a>
   </div>
 </div>
 
 <div class="service-block" id="testing">
+  <img src="img_medical.jpg" alt="Professional medical delivery and testing services" class="service-img" loading="lazy">
   <div class="service-header"><span class="service-icon">🧪</span><div><h2>Mobile Drug Testing</h2><p>Launching Soon &middot; DOT &amp; non-DOT &middot; Schools, employers, municipalities &amp; DCFS</p></div></div>
   <div class="service-body">
     <p style="color:var(--muted);font-size:15px;margin-bottom:20px;font-weight:300">On-site drug testing that comes to you — fully documented, chain-of-custody compliant, and available after hours. Serving employers, schools, government agencies, and DCFS across Will County and surrounding areas.</p>
@@ -175,6 +187,38 @@
 var open=false,started=false,collecting=false,cstep=null,cinfo={};
 
 var QA=[
+  {k:["hello","hi","hey","good morning","good afternoon","good evening","howdy"],
+   a:"Hello! Welcome to Solvia Health Services. I am here to help 24/7. You can ask me about our services, coverage area, how to get started, or careers. What can I help you with?",
+   q:["What services do you offer?","What areas do you serve?","How do I get started?","I'm looking for a job"]},
+
+  {k:["thank","thanks","ty","appreciate","helpful","great","awesome","perfect","wonderful","sounds good"],
+   a:"You are very welcome! Is there anything else I can help you with today?",
+   q:["What services do you offer?","How do I get started?","What areas do you serve?"]},
+
+  {k:["ok","okay","got it","understood","sure","alright","makes sense","noted"],
+   a:"Great! Feel free to ask anything else. I am here to help.",
+   q:["What services do you offer?","How do I get started?","What areas do you serve?"]},
+
+  {k:["how long","timeline","when can you start","how soon","wait time","waiting"],
+   a:"We typically begin service within 14 business days of a signed agreement. For urgent needs, contact us directly — we do our best to accommodate same-day and emergency placements. For home support, we start with a free 60-minute assessment first.",
+   q:["How do I get started?","Do you accept insurance?","What areas do you serve?"]},
+
+  {k:["free","assessment","consultation","eval","evaluate","visit"],
+   a:"Yes — we offer a free 60-minute assessment visit for new home support clients. This lets us understand your needs and build a care plan before any commitment. Contact us at evauters@solviahealth.org or (757) 266-2702 to schedule.",
+   q:["How do I get started?","Tell me about home support","Do you accept insurance?"]},
+
+  {k:["contact","email","phone","call","number","reach","speak","talk","person"],
+   a:"You can reach us at <a href='mailto:evauters@solviahealth.org' style='color:#C89F2A'>evauters@solviahealth.org</a> or call <a href='tel:7572662702' style='color:#C89F2A'>(757) 266-2702</a>. We respond within 4 hours. You can also fill out our inquiry form at the Contact page. Would you like to leave your number for a callback?",
+   q:["Yes — have Dr. Vauters call me","What services do you offer?","How do I get started?"]},
+
+  {k:["senior","elderly","elder","aging","old","grandmother","grandfather","parent","mom","dad","grandma","grandpa","loved one"],
+   a:"Solvia specializes in support for seniors and elderly individuals. We provide transportation to appointments, companion care and personal care at home, dementia and Alzheimer's specialist care, overnight coverage, and complex care for high-acuity clients. We treat every client like family.",
+   q:["Tell me about home support","Do you accept insurance?","How do I get started?"]},
+
+  {k:["website","site","online","page","link","url","www"],
+   a:"Our full website is at <a href='https://www.solviahealth.org' style='color:#C89F2A'>www.solviahealth.org</a>. You can learn about all our services, view career opportunities, and submit an inquiry directly from the Contact page.",
+   q:["What services do you offer?","How do I get started?","I'm looking for a job"]},
+
   {k:["what services","what do you offer","what do you do","services","tell me about"],
    a:"Solvia offers four services: <b>Patient Transportation</b> (appointments, dialysis, after-hours), <b>Medical Courier & Logistics</b> (specimens, pharmaceuticals, STAT runs), <b>Private Duty Home Support</b> (companion care through hospice), and <b>Mobile Drug Testing</b> launching soon. All active now except drug testing.",
    q:["Tell me about transportation","Tell me about home support","Tell me about courier","How do I get started?"]},
@@ -310,9 +354,9 @@ function respond(text){
       addMsg('bot',matched.a);
       if(matched.q)setTimeout(function(){showQ(matched.q);},500);
     } else {
-      // Genuinely cannot answer — now suggest contact
-      addMsg('bot','That is a great question. For the most accurate answer on that, please reach out to Dr. Vauters directly at <a href="mailto:evauters@solviahealth.org" style="color:#C89F2A">evauters@solviahealth.org</a> or call <a href="tel:7572662702" style="color:#C89F2A">(757) 266-2702</a> — she responds within 4 hours. Would you like to leave your number for a callback instead?');
-      setTimeout(function(){showQ(['Yes — have Dr. Vauters call me','What services do you offer?','How do I get started?']);},500);
+      // Genuinely cannot answer — friendly redirect
+      addMsg('bot','I want to make sure you get the right answer on that. You can reach us at <a href="mailto:evauters@solviahealth.org" style="color:#C89F2A">evauters@solviahealth.org</a> or call <a href="tel:7572662702" style="color:#C89F2A">(757) 266-2702</a> — we respond within 4 hours. Or I can take your number and have Dr. Vauters call you directly.');
+      setTimeout(function(){showQ(['Yes — have Dr. Vauters call me','What services do you offer?','How do I get started?','What areas do you serve?']);},500);
     }
   }, 700 + Math.random()*400);
 }
