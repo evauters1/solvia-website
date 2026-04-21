@@ -13,7 +13,7 @@
     <span class="nav-name">Solvia <span>Health Services</span></span>
   </a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
-  <div class="nav-links"><a href="index.html">Home</a><a href="services.html" class="active">Services</a><a href="about.html">About Us</a><a href="contact.html">Contact</a></div>
+  <div class="nav-links"><a href="index.html">Home</a><a href="services.html" class="active">Services</a><a href="about.html">About Us</a><a href="careers.html">Careers</a><a href="contact.html">Contact</a></div>
   <div class="nav-social">
   <a href="https://facebook.com/SolviaHealthServices" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
   <a href="https://instagram.com/SolviaHealthServices" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -109,5 +109,345 @@
     <div class="footer-col"><h4>Reach Us</h4><a href="mailto:evauters@solviahealth.org">evauters@solviahealth.org</a><a href="tel:7572662702">(757) 266-2702</a><p>Joliet, Illinois</p><p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:4px">Will · DuPage · Kendall · Kane · Kankakee · Cook</p></div>
   </div>
 </div>
-<div class="footer-bottom"><p>&copy; 2026 Solvia Health Services, LLC &nbsp;&middot;&nbsp; <a href="https://www.solviahealth.org">www.solviahealth.org</a> &nbsp;&middot;&nbsp; Woman-Owned Business (51%) &nbsp;&middot;&nbsp; Joliet, Illinois</p></div>
-</footer></body></html>
+<div class="footer-bottom"><p>&copy; 2026 Solvia Health Services, LLC &nbsp;&middot;&nbsp; <a href="https://www.solviahealth.org">www.solviahealth.org</a> &nbsp;&middot;&nbsp; Woman-Owned Business &nbsp;&middot;&nbsp; Joliet, Illinois</p></div>
+</footer>
+<!-- ═══════════════════════════════════════
+     SOLVIA AI CHAT WIDGET
+     Claude-powered · Lead capture · Mobile alerts
+     ═══════════════════════════════════════ -->
+<style>
+#solvia-chat-btn {
+  position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: #0D2B5E; border: 3px solid #C89F2A;
+  box-shadow: 0 4px 20px rgba(13,43,94,.35);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all .25s; animation: chatPulse 2.5s infinite;
+}
+#solvia-chat-btn:hover { transform: scale(1.08); background: #163970; }
+@keyframes chatPulse {
+  0%,100% { box-shadow: 0 4px 20px rgba(13,43,94,.35); }
+  50% { box-shadow: 0 4px 28px rgba(200,159,42,.5), 0 0 0 6px rgba(200,159,42,.12); }
+}
+#solvia-chat-btn svg { width: 26px; height: 26px; color: white; }
+#solvia-chat-btn .notif-dot {
+  position: absolute; top: 2px; right: 2px;
+  width: 14px; height: 14px; background: #C89F2A;
+  border-radius: 50%; border: 2px solid white;
+  font-size: 8px; color: #0D2B5E; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+#solvia-chat-window {
+  position: fixed; bottom: 100px; right: 28px; z-index: 9998;
+  width: 360px; max-width: calc(100vw - 40px);
+  background: white; border-radius: 16px;
+  box-shadow: 0 12px 48px rgba(13,43,94,.22);
+  border: 1px solid #E2DDD4;
+  display: none; flex-direction: column;
+  max-height: 520px; overflow: hidden;
+  font-family: "Jost", "Segoe UI", sans-serif;
+}
+#solvia-chat-window.open { display: flex; }
+.chat-header {
+  background: #0D2B5E; padding: 14px 18px;
+  display: flex; align-items: center; gap: 12px;
+  border-radius: 16px 16px 0 0;
+}
+.chat-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: #C89F2A; display: flex; align-items: center;
+  justify-content: center; font-weight: 700; color: #0D2B5E;
+  font-size: 14px; flex-shrink: 0;
+}
+.chat-header-info { flex: 1; }
+.chat-header-name { color: white; font-size: 14px; font-weight: 600; }
+.chat-header-status { color: rgba(255,255,255,.6); font-size: 11px; margin-top: 2px; }
+.chat-close { color: rgba(255,255,255,.7); cursor: pointer; font-size: 20px; line-height: 1; background: none; border: none; padding: 0 4px; }
+.chat-close:hover { color: white; }
+.chat-messages {
+  flex: 1; overflow-y: auto; padding: 16px;
+  display: flex; flex-direction: column; gap: 10px;
+  min-height: 200px;
+}
+.chat-messages::-webkit-scrollbar { width: 4px; }
+.chat-messages::-webkit-scrollbar-thumb { background: #E2DDD4; border-radius: 4px; }
+.msg { max-width: 82%; display: flex; flex-direction: column; gap: 3px; }
+.msg.bot { align-self: flex-start; }
+.msg.user { align-self: flex-end; }
+.msg-bubble {
+  padding: 10px 13px; border-radius: 12px;
+  font-size: 13.5px; line-height: 1.55;
+}
+.msg.bot .msg-bubble { background: #F0F4FF; color: #1A1A2E; border-bottom-left-radius: 3px; }
+.msg.user .msg-bubble { background: #0D2B5E; color: white; border-bottom-right-radius: 3px; }
+.msg-time { font-size: 10px; color: #9CA3AF; padding: 0 4px; }
+.msg.user .msg-time { text-align: right; }
+.typing-indicator { display: flex; gap: 4px; padding: 12px 14px; background: #F0F4FF; border-radius: 12px; border-bottom-left-radius: 3px; width: fit-content; }
+.typing-dot { width: 7px; height: 7px; background: #0D2B5E; border-radius: 50%; opacity: .4; animation: typingBounce 1.2s infinite; }
+.typing-dot:nth-child(2) { animation-delay: .2s; }
+.typing-dot:nth-child(3) { animation-delay: .4s; }
+@keyframes typingBounce { 0%,60%,100% { transform: none; opacity:.4; } 30% { transform: translateY(-4px); opacity:1; } }
+.chat-quick-btns { padding: 0 16px 10px; display: flex; flex-wrap: wrap; gap: 7px; }
+.quick-btn {
+  background: white; border: 1px solid #0D2B5E; color: #0D2B5E;
+  padding: 6px 12px; border-radius: 20px; font-size: 12px;
+  cursor: pointer; font-family: inherit; font-weight: 500;
+  transition: all .18s; white-space: nowrap;
+}
+.quick-btn:hover { background: #0D2B5E; color: white; }
+.chat-input-row {
+  padding: 12px 14px; border-top: 1px solid #E8E0CC;
+  display: flex; gap: 8px; align-items: center;
+}
+.chat-input {
+  flex: 1; border: 1.5px solid #E2DDD4; border-radius: 22px;
+  padding: 9px 14px; font-size: 13.5px; outline: none;
+  font-family: inherit; color: #1A1A2E; background: #FAFAF7;
+  transition: border-color .2s;
+}
+.chat-input:focus { border-color: #C89F2A; background: white; }
+.chat-send {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #0D2B5E; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: .2s; flex-shrink: 0;
+}
+.chat-send:hover { background: #163970; transform: scale(1.05); }
+.chat-send svg { width: 16px; height: 16px; color: white; }
+.chat-footer { padding: 8px; text-align: center; font-size: 10px; color: #9CA3AF; border-top: 1px solid #F0F0F0; }
+.chat-footer a { color: #C89F2A; text-decoration: none; }
+.lead-captured { background: #EDFAF3; border: 1px solid #A3D9A5; border-radius: 10px; padding: 12px; margin: 4px 0; font-size: 12px; color: #1A6B3A; }
+</style>
+
+<div id="solvia-chat-btn" onclick="toggleChat()" title="Chat with Solvia">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <div class="notif-dot">1</div>
+</div>
+
+<div id="solvia-chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">S</div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Solvia Health Services</div>
+      <div class="chat-header-status">&#x25cf; Online now — typically replies instantly</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">&#x2715;</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-quick-btns" id="quickBtns"></div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="chat-send" onclick="sendMsg()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+  <div class="chat-footer">Powered by Solvia AI &nbsp;&middot;&nbsp; <a href="mailto:evauters@solviahealth.org">evauters@solviahealth.org</a></div>
+</div>
+
+<script>
+const SOLVIA_KNOWLEDGE = `You are the Solvia Health Services AI assistant. You represent a professional, woman-owned healthcare logistics company based in Will County, Illinois, serving Metro Chicagoland and growing throughout Illinois.
+
+ABOUT SOLVIA:
+- Founded: March 23, 2026 by Dr. Erica Vauters and Walker Vauters
+- Email: evauters@solviahealth.org | Phone: (757) 266-2702
+- Website: www.solviahealth.org
+- Hours: Monday-Saturday 24-hour service. Sunday emergency response only.
+- Response guarantee: We respond within 4 hours.
+
+SERVICES (do not quote specific prices - say "contact us for rates"):
+1. Patient Transportation - Non-emergency ambulatory transport for medical appointments, dialysis, after-hours coverage
+2. Medical Courier & Logistics - Specimen transport, pharmaceutical delivery, STAT and after-hours runs, chain-of-custody on every run
+3. Private Duty Home Support - CNA-supervised care including dementia, behavioral health, overnight, and complex care. Five-tier model from companion care to hospice support.
+4. Mobile Drug Testing - Launching soon. DOT and non-DOT on-site collection for schools, employers, municipalities, DCFS.
+
+SERVICE AREA: Metro Chicagoland - Will County base, growing throughout Illinois including Edgar County. We go where we are needed.
+
+CAREERS: We hire 1099 independent contractor drivers and companion care providers. Career pathway from Driver to Companion Care to CNA to Specialist. Apply at www.solviahealth.org/careers
+
+PARTNERSHIPS: MOU Partner Program available for nonprofits, community health organizations, social service agencies. Preferred service terms, no minimum referral volume.
+
+YOUR ROLE:
+- Be warm, professional, and helpful
+- Answer questions about services, careers, and partnerships
+- When someone wants to inquire about services or has a specific need, collect their name and phone number and let them know Dr. Vauters will follow up within 4 hours
+- Never quote specific prices - always say "contact us directly for current rates"
+- Keep responses concise - 2-3 sentences max unless more detail is needed
+- Always be welcoming to everyone regardless of background
+- If asked something you don't know, say "Let me connect you with Dr. Vauters directly" and ask for their contact info`;
+
+let chatOpen = false;
+let convoHistory = [];
+let leadInfo = { name: null, phone: null, captured: false };
+let chatStarted = false;
+
+const quickOptions = {
+  start: ["Learn about services","Career opportunities","Partner with Solvia","Request a consultation"],
+  services: ["Patient transportation","Medical courier","Home support","Drug testing"],
+  contact: ["Yes, connect me now","I'll reach out later"]
+};
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const win = document.getElementById('solvia-chat-window');
+  const dot = document.querySelector('.notif-dot');
+  if(chatOpen) {
+    win.classList.add('open');
+    if(dot) dot.style.display='none';
+    if(!chatStarted) { chatStarted=true; setTimeout(startChat, 300); }
+    setTimeout(()=>document.getElementById('chatInput').focus(), 400);
+  } else {
+    win.classList.remove('open');
+  }
+}
+
+function startChat() {
+  addMsg('bot', "Hi there! Welcome to Solvia Health Services. I'm here to help you 24/7. How can I assist you today?");
+  setTimeout(()=>showQuickBtns(quickOptions.start), 600);
+}
+
+function showQuickBtns(opts) {
+  const el = document.getElementById('quickBtns');
+  el.innerHTML = opts.map(o=>`<button class="quick-btn" onclick="quickSend('${o}')">${o}</button>`).join('');
+}
+
+function clearQuickBtns() {
+  document.getElementById('quickBtns').innerHTML='';
+}
+
+function quickSend(text) {
+  clearQuickBtns();
+  addMsg('user', text);
+  processMsg(text);
+}
+
+function sendMsg() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if(!text) return;
+  input.value='';
+  clearQuickBtns();
+  addMsg('user', text);
+  processMsg(text);
+}
+
+function addMsg(role, text, extra='') {
+  const msgs = document.getElementById('chatMessages');
+  const time = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.innerHTML = `<div class="msg-bubble">${text}</div><div class="msg-time">${time}</div>`;
+  if(extra) {
+    const ext = document.createElement('div');
+    ext.className = 'lead-captured';
+    ext.textContent = extra;
+    div.appendChild(ext);
+  }
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  convoHistory.push({role: role==='bot'?'assistant':'user', content: text});
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg bot'; div.id = 'typingIndicator';
+  div.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const el = document.getElementById('typingIndicator');
+  if(el) el.remove();
+}
+
+async function processMsg(userText) {
+  // Check if we are collecting lead info
+  if(leadInfo.awaitingName) {
+    leadInfo.name = userText;
+    leadInfo.awaitingName = false;
+    leadInfo.awaitingPhone = true;
+    setTimeout(()=>addMsg('bot', `Thank you, ${leadInfo.name}! What is the best phone number to reach you?`), 400);
+    return;
+  }
+  if(leadInfo.awaitingPhone) {
+    leadInfo.phone = userText;
+    leadInfo.awaitingPhone = false;
+    leadInfo.captured = true;
+    notifyLead();
+    setTimeout(()=>{
+      addMsg('bot', `Perfect! Dr. Vauters will reach out to you at ${leadInfo.phone} within 4 hours. Is there anything else I can help you with in the meantime?`,'');
+      showQuickBtns(["Learn about services","View careers","Visit our website"]);
+    }, 500);
+    return;
+  }
+
+  showTyping();
+  try {
+    const messages = [
+      ...convoHistory.slice(-8),
+      {role:'user', content: userText}
+    ];
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:300,
+        system: SOLVIA_KNOWLEDGE,
+        messages: messages
+      })
+    });
+    const data = await res.json();
+    removeTyping();
+    const reply = data.content?.[0]?.text || "I'd love to help you further. Please contact us directly at evauters@solviahealth.org or (757) 266-2702.";
+    addMsg('bot', reply);
+
+    // Detect if we should offer to capture lead
+    const lower = userText.toLowerCase();
+    const wantsContact = lower.includes('contact') || lower.includes('interested') ||
+      lower.includes('request') || lower.includes('consult') || lower.includes('partner') ||
+      lower.includes('service') || lower.includes('apply') || lower.includes('hire') ||
+      lower.includes('help') || lower.includes('need') || lower.includes('call');
+
+    if(wantsContact && !leadInfo.captured) {
+      setTimeout(()=>{
+        addMsg('bot', "I'd love to connect you with Dr. Vauters directly. Can I get your name so she can follow up with you personally within 4 hours?");
+        leadInfo.awaitingName = true;
+      }, 800);
+    } else if(!leadInfo.captured) {
+      // Offer quick follow-up buttons contextually
+      const lowerReply = reply.toLowerCase();
+      if(lowerReply.includes('service') || lowerReply.includes('transport') || lowerReply.includes('courier')) {
+        setTimeout(()=>showQuickBtns(["Request a consultation","Learn more","View careers"]), 500);
+      }
+    }
+  } catch(err) {
+    removeTyping();
+    addMsg('bot', "I apologize for the delay. Please contact Dr. Vauters directly at evauters@solviahealth.org or call (757) 266-2702 and she will respond within 4 hours.");
+  }
+}
+
+function notifyLead() {
+  // Send lead notification via email using a form submission
+  // This creates a mailto link that opens on mobile — replace with
+  // your form endpoint or EmailJS when ready
+  const subject = encodeURIComponent("New Solvia Website Chat Lead");
+  const body = encodeURIComponent(
+    "NEW LEAD FROM WEBSITE CHAT\n\n" +
+    "Name: " + (leadInfo.name || "Not provided") + "\n" +
+    "Phone: " + (leadInfo.phone || "Not provided") + "\n" +
+    "Time: " + new Date().toLocaleString() + "\n\n" +
+    "Recent conversation:\n" +
+    convoHistory.slice(-6).map(m=>m.role.toUpperCase()+": "+m.content).join("\n")
+  );
+  // Silent notification attempt
+  const img = new Image();
+  img.src = `https://formsubmit.co/ajax/evauters@solviahealth.org?name=${encodeURIComponent(leadInfo.name||'')}&phone=${encodeURIComponent(leadInfo.phone||'')}&source=website_chat&_subject=${encodeURIComponent('New Solvia Chat Lead - '+leadInfo.name)}`;
+}
+</script>
+</body></html>
