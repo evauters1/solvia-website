@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Solvia Health Services — Medical courier, patient transportation, home support, and drug testing across the Southwest Chicago Metro.">
-<title>Contact | Solvia Health Services</title>
+<meta name="description" content="Careers at Solvia Health Services — Join a growing team making a real difference. 1099 independent contractor opportunities in Will County and Metro Chicagoland.">
+<title>Careers | Solvia Health Services</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+.job-card {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.job-card:hover { box-shadow: var(--sh); }
+.job-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  cursor: pointer;
+  gap: 16px;
+}
+.job-title-row:hover { background: var(--cream); }
+.job-title-left { display: flex; align-items: center; gap: 16px; }
+.job-icon { font-size: 28px; flex-shrink: 0; }
+.job-title-text h3 { font-size: 18px; color: var(--navy); font-weight: 600; margin-bottom: 4px; }
+.job-title-text p { font-size: 13px; color: var(--muted); font-weight: 300; }
+.job-expand-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--navy); color: var(--gold);
+  border: none; cursor: pointer;
+  font-size: 20px; font-weight: 300;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: background .2s, transform .3s;
+}
+.job-card.open .job-expand-btn { transform: rotate(45deg); background: var(--gold); color: var(--navy); }
+.job-body {
+  display: none;
+  padding: 0 28px 28px;
+  border-top: 1px solid var(--border);
+}
+.job-card.open .job-body { display: block; }
+.job-body-inner { padding-top: 24px; }
+.job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+@media(max-width:600px){ .job-grid { grid-template-columns: 1fr; } }
+.job-section-label { font-size: 11px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 10px; }
+.job-list { list-style: none; padding: 0; margin: 0; }
+.job-list li { font-size: 14px; color: var(--muted); font-weight: 300; padding: 5px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; }
+.job-list li:last-child { border-bottom: none; }
+.job-list li::before { content: "✓"; color: var(--gold-dk); font-weight: 700; flex-shrink: 0; }
+.comp-box { background: #FAFAF7; border-radius: 10px; padding: 18px 20px; border: 1px solid var(--border); margin-bottom: 20px; }
+.comp-box p { font-size: 14px; color: var(--muted); font-weight: 300; line-height: 1.7; }
+</style>
 </head><body>
 <nav class="site-nav"><div class="nav-inner">
   <a href="index.html" class="nav-brand">
@@ -12,7 +61,7 @@
     <span class="nav-name">Solvia <span>Health Services</span></span>
   </a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
-  <div class="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About Us</a><a href="careers.html">Careers</a><a href="contact.html" class="active">Contact</a></div>
+  <div class="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About Us</a><a href="careers.html" class="active">Careers</a><a href="contact.html">Contact</a></div>
   <div class="nav-social">
   <a href="https://facebook.com/SolviaHealthServices" target="_blank" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
   <a href="https://instagram.com/SolviaHealthServices" target="_blank" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -22,94 +71,210 @@
   <a href="contact.html" class="nav-cta">Get Started</a>
 </div></nav>
 
-<section class="hero" style="padding:72px 24px 60px">
-  <p class="eyebrow" style="color:var(--gold)">Let's Connect</p>
-  <h1 style="font-size:clamp(30px,5vw,52px);font-weight:700;margin-bottom:16px">We Respond Within <em>4 Hours.</em></h1>
-  <p class="hero-sub" style="margin:0 auto">Whether you need services today, are exploring a partnership, or represent a facility looking for a reliable vendor — reach out and let's build something together.</p>
+<section class="hero" style="padding:72px 24px 56px">
+  <p class="eyebrow" style="color:var(--gold-dk)">Join Our Team</p>
+  <h1 style="font-size:clamp(30px,5vw,52px);font-weight:700;color:var(--navy);margin-bottom:16px">Start Where You Are.<br><em>Grow With Us.</em></h1>
+  <p style="font-size:clamp(15px,2.5vw,18px);color:var(--muted);max-width:580px;margin:0 auto 32px;font-weight:300">Solvia is building a team of reliable, professional, people-centered contractors across Metro Chicagoland. We offer real partnership — not just a gig.</p>
+  <a href="#apply" class="btn btn-gold">Apply Now</a>
 </section>
-<div class="section-full"><div class="section">
-  <div class="contact-info-grid">
-    <div class="contact-info-card"><div class="ci-icon">📧</div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:evauters@solviahealth.org">evauters@solviahealth.org</a></div></div>
-    <div class="contact-info-card"><div class="ci-icon">📞</div><div class="ci-label">Phone</div><div class="ci-val"><a href="tel:7572662702">(757) 266-2702</a></div></div>
-    <div class="contact-info-card"><div class="ci-icon">📍</div><div class="ci-label">Location</div><div class="ci-val">Joliet, Illinois</div></div>
-    <div class="contact-info-card"><div class="ci-icon">🌐</div><div class="ci-label">Website</div><div class="ci-val"><a href="https://www.solviahealth.org">www.solviahealth.org</a></div></div>
-    <div class="contact-info-card"><div class="ci-icon">🕐</div><div class="ci-label">Hours</div><div class="ci-val">Mon–Sat: 24-Hr Service<br>Sun: Emergency Only</div></div>
-    <div class="contact-info-card"><div class="ci-icon">🗺️</div><div class="ci-label">Service Area</div><div class="ci-val" style="font-size:13px">Will · DuPage · Kendall<br>Kane · Kankakee · Cook</div></div>
+
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-num">Flexible</div><div class="trust-label">You Set Your Hours</div></div>
+    <div class="trust-item"><div class="trust-num">1099</div><div class="trust-label">Independent Contractor</div></div>
+    <div class="trust-item"><div class="trust-num">Weekly</div><div class="trust-label">Direct Deposit Pay</div></div>
+    <div class="trust-item"><div class="trust-num">Grow</div><div class="trust-label">Real Career Pathway</div></div>
   </div>
-  <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:32px;align-items:start">
-    <div class="contact-form">
-      <form action="https://formsubmit.co/evauters@solviahealth.org" method="POST">
-      <input type="hidden" name="_subject" value="New Solvia Service Inquiry">
-      <input type="hidden" name="_next" value="https://www.solviahealth.org/contact.html">
-      <input type="hidden" name="_captcha" value="false">
-      <p class="eyebrow">Inquiry Form</p>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--navy);margin-bottom:8px">Service &amp; Partnership Inquiry</h2>
-      <p style="color:var(--muted);font-size:14px;margin-bottom:28px">A member of our team will follow up within 24–48 hours.</p>
-      <div class="form-row">
-        <div class="form-group"><label>Full Name *</label><input type="text" name="full_name" placeholder="Your full name" required></div>
-        <div class="form-group"><label>Organization (if applicable)</label><input type="text" name="organization" placeholder="Organization name"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Email Address *</label><input type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="form-group"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(xxx) xxx-xxxx" required></div>
-      </div>
-      <div class="form-group"><label>Type of Inquiry *</label>
-        <select name="inquiry_type" required><option value="">Select one...</option>
-          <option>Individual / Family Seeking Services</option>
-          <option>Healthcare Facility / Organization</option>
-          <option>School / Government / Agency</option>
-          <option>Potential Business Partner / MOU</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Services Needed</label>
-        <select name="service_needed"><option value="">Select service...</option>
-          <option>Patient Transportation</option>
-          <option>Medical Courier &amp; Logistics</option>
-          <option>Private Duty Home Support</option>
-          <option>Mobile Drug Testing (Coming Soon)</option>
-          <option>MOU Partnership</option>
-          <option>Not Sure / Need Guidance</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Location Where Services Are Needed</label><input type="text" name="location" placeholder="e.g. Joliet, Will County, Bolingbrook..."></div>
-      <div class="form-group"><label>When Do You Need Services?</label>
-        <select name="timeline"><option value="">Select timeline...</option>
-          <option>Immediately</option><option>Within 1–2 weeks</option>
-          <option>Within 30 days</option><option>Just exploring options</option>
-        </select>
-      </div>
-      <div class="form-group"><label>Additional Details</label><textarea name="details" placeholder="Tell us more about your needs, current challenges, or any questions you have..."></textarea></div>
-      <div class="form-group" style="display:flex;align-items:flex-start;gap:10px">
-        <input type="checkbox" id="agree" style="width:auto;margin-top:4px">
-        <label for="agree" style="font-size:13px;color:var(--muted);font-weight:400">I understand that submitting this form is a request for information and does not guarantee service until a formal agreement is finalized.</label>
-      </div>
-      <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px">Submit Inquiry</button>
-      <p class="form-note">We respond within 24–48 hours. For urgent needs call (757) 266-2702 directly.</p>
-      </form>
-    </div>
-    <div>
-      <div class="card" style="margin-bottom:24px">
-        <h3>Now Accepting</h3>
-        <p style="margin-bottom:16px;color:var(--muted);font-size:14px">Solvia is actively serving clients and building partnerships across the Southwest Chicago Metro.</p>
-        <ul style="list-style:none;font-size:14px">
-          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--gold-dk);font-weight:700">✓</span>New home support clients</li>
-          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--gold-dk);font-weight:700">✓</span>Medical courier contracts</li>
-          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--gold-dk);font-weight:700">✓</span>Transportation partnerships</li>
-          <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px"><span style="color:var(--gold-dk);font-weight:700">✓</span>MOU partner organizations</li>
-          <li style="padding:8px 0;display:flex;gap:10px"><span style="color:var(--gold-dk);font-weight:700">⏳</span>Drug testing interest list</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Follow Us</h3>
-        <p style="color:var(--muted);font-size:14px;margin-bottom:16px">Stay connected with Solvia Health Services on social media.</p>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <a href="https://facebook.com/SolviaHealthServices" target="_blank" style="display:flex;align-items:center;gap:12px;color:var(--navy);font-size:14px;font-weight:500;padding:10px 14px;border-radius:8px;border:1px solid var(--border);transition:.2s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>Facebook — @SolviaHealthServices</a>
-          <a href="https://instagram.com/SolviaHealthServices" target="_blank" style="display:flex;align-items:center;gap:12px;color:var(--navy);font-size:14px;font-weight:500;padding:10px 14px;border-radius:8px;border:1px solid var(--border);transition:.2s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Instagram — @SolviaHealthServices</a>
-          <a href="https://linkedin.com/company/solvia-health-services" target="_blank" style="display:flex;align-items:center;gap:12px;color:var(--navy);font-size:14px;font-weight:500;padding:10px 14px;border-radius:8px;border:1px solid var(--border);transition:.2s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn — Solvia Health Services</a>
-          <a href="https://youtube.com/@SolviaHealthServices" target="_blank" style="display:flex;align-items:center;gap:12px;color:var(--navy);font-size:14px;font-weight:500;padding:10px 14px;border-radius:8px;border:1px solid var(--border);transition:.2s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>YouTube — @SolviaHealthServices</a>
+</div>
+
+<!-- OPEN POSITIONS -->
+<div style="background:var(--cream);padding:72px 24px">
+<div class="section" style="padding:0">
+  <p class="eyebrow">Open Positions</p>
+  <h2 class="section-title">Current Opportunities</h2>
+  <div class="divider"></div>
+  <p style="color:var(--muted);font-size:15px;font-weight:300;margin-bottom:36px">Tap any position to learn more and apply.</p>
+
+  <!-- JOB 1 -->
+  <div class="job-card" id="job-courier">
+    <div class="job-title-row" onclick="toggleJob('job-courier')">
+      <div class="job-title-left">
+        <span class="job-icon">🚗</span>
+        <div class="job-title-text">
+          <h3>Medical Courier Driver</h3>
+          <p>1099 Independent Contractor &nbsp;·&nbsp; Metro Chicagoland &amp; Edgar County &nbsp;·&nbsp; Flexible Hours</p>
         </div>
       </div>
+      <button class="job-expand-btn" aria-label="Expand">+</button>
+    </div>
+    <div class="job-body">
+      <div class="job-body-inner">
+        <p style="color:var(--muted);font-size:15px;margin-bottom:24px;font-weight:300">Transport medical specimens, pharmaceuticals, and supplies to clinics, labs, and healthcare facilities. This is a real partnership with a growing company that treats its contractors with respect.</p>
+        <div class="job-grid">
+          <div>
+            <p class="job-section-label">What You Will Do</p>
+            <ul class="job-list">
+              <li>Pick up and deliver specimens and medical supplies</li>
+              <li>Document every run with photos and logs</li>
+              <li>Follow chain-of-custody procedures</li>
+              <li>Cover scheduled routes and on-call STAT runs</li>
+              <li>After-hours and weekend runs available</li>
+            </ul>
+          </div>
+          <div>
+            <p class="job-section-label">What We Require</p>
+            <ul class="job-list">
+              <li>Valid Illinois driver's license</li>
+              <li>Clean driving record (MVR pulled)</li>
+              <li>Reliable vehicle in good condition</li>
+              <li>Personal auto insurance — commercial use disclosed</li>
+              <li>Smartphone with GPS</li>
+              <li>FBI background check clearance</li>
+            </ul>
+          </div>
+        </div>
+        <div class="comp-box">
+          <p class="job-section-label" style="margin-bottom:6px">Compensation</p>
+          <p>Paid per completed run. After-hours and STAT runs carry premium rates. Weekly direct deposit. You are responsible for your own taxes as a 1099 contractor.</p>
+        </div>
+        <a href="#apply" class="btn btn-navy" onclick="document.getElementById('pos-select').value='Medical Courier Driver'">Apply for This Position</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOB 2 -->
+  <div class="job-card" id="job-transport">
+    <div class="job-title-row" onclick="toggleJob('job-transport')">
+      <div class="job-title-left">
+        <span class="job-icon">🏥</span>
+        <div class="job-title-text">
+          <h3>Patient Transportation Driver</h3>
+          <p>1099 Independent Contractor &nbsp;·&nbsp; Metro Chicagoland &amp; Edgar County &nbsp;·&nbsp; Flexible Hours</p>
+        </div>
+      </div>
+      <button class="job-expand-btn" aria-label="Expand">+</button>
+    </div>
+    <div class="job-body">
+      <div class="job-body-inner">
+        <p style="color:var(--muted);font-size:15px;margin-bottom:24px;font-weight:300">Transport real people — seniors, individuals with health challenges, and families counting on someone to show up — to medical appointments, dialysis, and hospital discharge. If you have the heart for it, we have the opportunity.</p>
+        <div class="job-grid">
+          <div>
+            <p class="job-section-label">What You Will Do</p>
+            <ul class="job-list">
+              <li>Transport ambulatory clients to medical appointments</li>
+              <li>Recurring dialysis runs (3x per week routes)</li>
+              <li>Hospital discharge transport</li>
+              <li>After-hours and weekend coverage</li>
+              <li>Treat every client with dignity and patience</li>
+            </ul>
+          </div>
+          <div>
+            <p class="job-section-label">What We Require</p>
+            <ul class="job-list">
+              <li>Valid Illinois driver's license</li>
+              <li>Clean MVR — no major violations</li>
+              <li>Reliable, clean, comfortable vehicle</li>
+              <li>Personal auto insurance — commercial use disclosed</li>
+              <li>Professional, compassionate demeanor</li>
+              <li>FBI background check clearance</li>
+            </ul>
+          </div>
+        </div>
+        <div class="comp-box">
+          <p class="job-section-label" style="margin-bottom:6px">Compensation</p>
+          <p>Paid per trip. Base rate plus mileage. Dialysis routes offer consistent recurring income. After-hours runs carry premium rates. Weekly direct deposit.</p>
+        </div>
+        <a href="#apply" class="btn btn-navy" onclick="document.getElementById('pos-select').value='Patient Transportation Driver'">Apply for This Position</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOB 3 -->
+  <div class="job-card" id="job-companion">
+    <div class="job-title-row" onclick="toggleJob('job-companion')">
+      <div class="job-title-left">
+        <span class="job-icon">🤝</span>
+        <div class="job-title-text">
+          <h3>Companion Care Provider</h3>
+          <p>1099 Independent Contractor &nbsp;·&nbsp; Metro Chicagoland &nbsp;·&nbsp; No Clinical License Required</p>
+        </div>
+      </div>
+      <button class="job-expand-btn" aria-label="Expand">+</button>
+    </div>
+    <div class="job-body">
+      <div class="job-body-inner">
+        <p style="color:var(--muted);font-size:15px;margin-bottom:24px;font-weight:300">Support seniors and individuals with daily living in their homes. Meal prep, light housekeeping, medication reminders, companionship. No clinical license required — just genuine care, reliability, and a clean background.</p>
+        <ul class="job-list" style="margin-bottom:24px">
+          <li>Meal preparation and light housekeeping</li>
+          <li>Medication reminders and daily routine support</li>
+          <li>Companionship and social engagement</li>
+          <li>Errands and appointment accompaniment</li>
+          <li>Family communication and shift documentation</li>
+        </ul>
+        <div class="comp-box">
+          <p class="job-section-label" style="margin-bottom:6px">Compensation &amp; Growth</p>
+          <p>Hourly pay. Companion Care is the entry point on the Solvia career ladder — grow into CNA, specialized care, or operational roles as Solvia expands. Weekly direct deposit.</p>
+        </div>
+        <a href="#apply" class="btn btn-navy" onclick="document.getElementById('pos-select').value='Companion Care Provider'">Apply for This Position</a>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+
+<!-- APPLICATION FORM -->
+<div class="section-full" id="apply"><div class="section">
+  <p class="eyebrow">Ready to Join Solvia?</p>
+  <h2 class="section-title">Apply Now</h2>
+  <div class="divider"></div>
+  <div style="max-width:640px;margin:0 auto">
+    <div class="contact-form">
+      <form action="https://formsubmit.co/evauters@solviahealth.org" method="POST">
+      <input type="hidden" name="_subject" value="New Solvia Contractor Application">
+      <input type="hidden" name="_next" value="https://www.solviahealth.org/careers.html">
+      <input type="hidden" name="_captcha" value="false">
+      <div class="form-row">
+        <div class="form-group"><label>Full Name *</label><input type="text" name="full_name" placeholder="Your full name" required></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" name="phone" placeholder="(xxx) xxx-xxxx" required></div>
+      </div>
+      <div class="form-group"><label>Email Address *</label><input type="email" name="email" placeholder="your@email.com" required></div>
+      <div class="form-group"><label>Position Applying For *</label>
+        <select name="position" id="pos-select" required>
+          <option value="">Select a position...</option>
+          <option>Medical Courier Driver</option>
+          <option>Patient Transportation Driver</option>
+          <option>Companion Care Provider</option>
+          <option>Open to Multiple Roles</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Service Area *</label>
+        <select name="service_area" required>
+          <option value="">Select your area...</option>
+          <option>Metro Chicagoland — Will County</option>
+          <option>Metro Chicagoland — DuPage / Kendall / Kane</option>
+          <option>Edgar County, IL</option>
+          <option>Multiple Areas</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Vehicle Type &amp; Year</label><input type="text" name="vehicle" placeholder="e.g. 2019 Toyota Camry"></div>
+      <div class="form-group"><label>Valid Illinois Driver's License? *</label>
+        <select name="drivers_license" required>
+          <option value="">Select...</option>
+          <option>Yes — clean record</option>
+          <option>Yes — some violations (explain below)</option>
+          <option>No</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Tell us about yourself and your availability</label>
+        <textarea name="about_yourself" placeholder="Share your experience, availability, and what draws you to this opportunity..."></textarea>
+      </div>
+      <div class="form-group" style="display:flex;align-items:flex-start;gap:10px">
+        <input type="checkbox" id="bg" name="background_check_agreement" value="agreed" style="width:auto;margin-top:4px" required>
+        <label for="bg" style="font-size:13px;color:var(--muted);font-weight:400">I understand that all Solvia contractors are subject to an FBI-level background check and MVR pull prior to first assignment.</label>
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:8px">Submit Application</button>
+      <p class="form-note">We respond within 48 hours. Questions? <a href="mailto:evauters@solviahealth.org">evauters@solviahealth.org</a> or <a href="tel:7572662702">(757) 266-2702</a></p>
+      </form>
     </div>
   </div>
 </div></div>
@@ -117,7 +282,7 @@
 <footer class="site-footer"><div class="footer-inner">
   <div class="footer-brand">
     <img src="logo_transparent.png" alt="Solvia Health Services" class="footer-logo">
-    <p class="footer-tagline">"Built on faith. Executed with excellence.<br>Scaled with purpose."</p>
+    <p class="footer-tagline">"Built on purpose. Executed with excellence.<br>Scaled with integrity."</p>
     <div class="social-row">
   <a href="https://facebook.com/SolviaHealthServices" target="_blank" class="soc-link" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
   <a href="https://instagram.com/SolviaHealthServices" target="_blank" class="soc-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
@@ -126,13 +291,41 @@
 </div>
   </div>
   <div class="footer-cols">
-    <div class="footer-col"><h4>Services</h4><a href="services.html#courier">Medical Courier</a><a href="services.html#transport">Patient Transport</a><a href="services.html#home">Home Support</a><a href="services.html#testing">Drug Testing</a></div>
-    <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="about.html#founders">Our Founders</a><a href="about.html#values">Core Values</a><a href="contact.html">Contact</a></div>
-    <div class="footer-col"><h4>Reach Us</h4><a href="mailto:evauters@solviahealth.org">evauters@solviahealth.org</a><a href="tel:7572662702">(757) 266-2702</a><p>Joliet, Illinois</p><p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:4px">Will · DuPage · Kendall · Kane · Kankakee · Cook</p></div>
+    <div class="footer-col"><h4>Services</h4>
+      <a href="services.html#courier">Medical Courier</a>
+      <a href="services.html#transport">Patient Transport</a>
+      <a href="services.html#home">Home Support</a>
+      <a href="services.html#testing">Drug Testing</a>
+    </div>
+    <div class="footer-col"><h4>Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col"><h4>Reach Us</h4>
+      <a href="mailto:evauters@solviahealth.org">evauters@solviahealth.org</a>
+      <a href="tel:7572662702">(757) 266-2702</a>
+      <p style="color:rgba(255,255,255,.55);font-size:14px">Will County, Illinois</p>
+      <p style="font-size:12px;color:rgba(255,255,255,.35);margin-top:4px">Serving Metro Chicagoland &amp; Growing Throughout Illinois</p>
+    </div>
   </div>
 </div>
-<div class="footer-bottom"><p>&copy; 2026 Solvia Health Services, LLC &nbsp;&middot;&nbsp; <a href="https://www.solviahealth.org">www.solviahealth.org</a> &nbsp;&middot;&nbsp; Woman-Owned Business &nbsp;&middot;&nbsp; Joliet, Illinois</p></div>
+<div class="footer-bottom">
+  <p>&copy; 2026 Solvia Health Services, LLC &nbsp;&middot;&nbsp;
+  <a href="https://www.solviahealth.org">www.solviahealth.org</a> &nbsp;&middot;&nbsp;
+  Woman-Owned Business &nbsp;&middot;&nbsp; Will County, Illinois</p>
+</div>
 </footer>
+
+<script>
+function toggleJob(id) {
+  var card = document.getElementById(id);
+  var isOpen = card.classList.contains('open');
+  document.querySelectorAll('.job-card').forEach(function(c){ c.classList.remove('open'); });
+  if (!isOpen) card.classList.add('open');
+}
+</script>
+
 <!-- SOLVIA CHAT WIDGET v3 — Self-contained, no API needed -->
 <style>
 #scb{position:fixed;bottom:28px;right:28px;z-index:9999;width:62px;height:62px;border-radius:50%;background:#0D2B5E;border:3px solid #C89F2A;box-shadow:0 4px 20px rgba(13,43,94,.35);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;animation:cp 2.5s infinite}
@@ -376,4 +569,5 @@ function notifyLead(){
   img.src='https://formsubmit.co/ajax/evauters@solviahealth.org?name='+encodeURIComponent(cinfo.name||'')+'&phone='+encodeURIComponent(cinfo.phone||'')+'&source=chat_callback&_subject='+encodeURIComponent('Solvia Chat Callback - '+cinfo.name);
 }
 </script>
+</body></html>
 </body></html>
