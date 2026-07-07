@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Solvia Health Services</title>
+  <meta name="description" content="Request a consultation with Solvia Health Services. Call 757-266-2702 or send us a message — we respond within 24 hours. Servicios disponibles en español." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="topbar">
+    <div class="wrap">
+      <span>Serving Greater Chicagoland &amp; surrounding counties — and expanding</span>
+      <span><a href="tel:+17572662702">757-266-2702</a> &nbsp;·&nbsp; <span class="bilingual">Servicios disponibles en español</span></span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Solvia Health Services home">
+          <img class="brand__logo" src="logo_transparent.png" alt="Solvia Health Services" />
+        </a>
+        <input type="checkbox" id="navtoggle" class="nav-toggle" aria-hidden="true" />
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+        <label for="navtoggle" class="nav-burger" aria-label="Toggle menu"><span></span></label>
+        <div class="nav-cta">
+          <a class="btn btn--gold phone-pill" href="tel:+17572662702">Call 757-266-2702</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="arc" aria-hidden="true"></div>
+        <h1>Let's talk about care</h1>
+        <p>Tell us about your loved one's needs and we'll help you find the right fit. Every conversation is personal, unhurried, and pressure-free. We respond within 24 hours.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="contact-grid">
+
+          <!-- INFO -->
+          <div class="contact-info">
+            <span class="eyebrow">Reach Us Directly</span>
+            <h2 style="font-size:clamp(1.7rem,3.2vw,2.3rem);">We're here when you need us</h2>
+            <p style="color:var(--ink-soft);">Available seven days a week, including evenings and weekends. Whether you're a family, a case manager, or a caregiver looking to join us — start here.</p>
+
+            <div class="info-item">
+              <div class="icon" aria-hidden="true">☏</div>
+              <div>
+                <h4>Call or Text</h4>
+                <a href="tel:+17572662702">757-266-2702</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon" aria-hidden="true">✉</div>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:evauters@solviahealth.org">evauters@solviahealth.org</a>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon" aria-hidden="true">◎</div>
+              <div>
+                <h4>Service Area</h4>
+                <p>Greater Chicagoland — Cook, DuPage, Kane, Will, Kankakee &amp; Edgar Counties, and growing beyond</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="icon" aria-hidden="true">☺</div>
+              <div>
+                <h4>En Español</h4>
+                <p>Servicios disponibles en español. Con gusto le atendemos.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FORM -->
+          <div class="form-card">
+            <h3 style="font-size:1.5rem;">Request a Consultation</h3>
+            <p style="color:var(--ink-soft); font-size:0.98rem;">Fill out the form and we'll be in touch within 24 hours.</p>
+
+            <!-- FormSubmit routes submissions to evauters@solviahealth.org.
+                 IMPORTANT: the FIRST submission triggers a one-time activation email
+                 from FormSubmit — click the link in it to turn the form on. -->
+            <form action="https://formsubmit.co/evauters@solviahealth.org" method="POST">
+              <!-- Config -->
+              <input type="hidden" name="_subject" value="New inquiry from solviahealth.org" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="true" />
+              <!-- Honeypot (spam trap) -->
+              <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+              <div class="field">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="field">
+                <label for="service">I'm interested in</label>
+                <select id="service" name="service">
+                  <option>Solvia Signature Care</option>
+                  <option>Private Duty Home Care</option>
+                  <option>Memory &amp; Cognitive Care</option>
+                  <option>Behavioral Health Support</option>
+                  <option>Hospice Support Care</option>
+                  <option>Home Rehabilitation Support</option>
+                  <option>Mobile Drug Testing (Oct 2026)</option>
+                  <option>Mobile Phlebotomy (Oct 2026)</option>
+                  <option>Careers / Joining the Team</option>
+                  <option>Referral Partnership</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="message">How can we help?</label>
+                <textarea id="message" name="message" placeholder="Tell us a little about the care you're looking for..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn--gold">Send Message</button>
+              <p class="form-note">Prefer to talk? Call or text <a href="tel:+17572662702">757-266-2702</a>.</p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand__mark">Solvia<span>.</span></span>
+          <p>Where dignity meets care — personalized for you. Premium in-home care serving Greater Chicagoland and surrounding counties — Cook, DuPage, Kane, Will, Kankakee, and Edgar — and expanding.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Get in Touch</h4>
+          <ul class="footer-contact">
+            <li><a href="tel:+17572662702">757-266-2702</a></li>
+            <li><a href="mailto:evauters@solviahealth.org">evauters@solviahealth.org</a></li>
+            <li><a href="https://www.solviahealth.org">www.solviahealth.org</a></li>
+            <li class="bilingual">Servicios disponibles en español</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Solvia Health Services LLC. All rights reserved.</span>
+        <span>Serving Greater Chicagoland &amp; surrounding counties — and expanding</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
